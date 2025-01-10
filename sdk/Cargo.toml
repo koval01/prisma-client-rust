@@ -1,0 +1,34 @@
+[package]
+name = "prisma-client-rust-sdk"
+version = "0.6.11"
+authors = ["Brendan Allan <brendonovich@outlook.com>"]
+edition = "2021"
+rust-version = "1.62"
+
+[features]
+default = ["mysql", "sqlite", "mssql", "postgresql", "mongodb"]
+
+mysql = ["query-core/mysql"]
+sqlite = ["query-core/sqlite"]
+mssql = ["query-core/mssql"]
+postgresql = ["query-core/postgresql"]
+mongodb = ["query-core/mongodb"]
+
+sqlite-create-many = ["psl/sqlite-create-many"]
+
+[dependencies]
+serde_json.workspace = true
+serde.workspace = true
+convert_case = "0.5.0"
+serde_path_to_error = "0.1.7"
+quote = "1.0.18"
+syn = "1.0.91"
+proc-macro2 = "1.0.39"
+thiserror = "1.0.37"
+
+prisma-models.workspace = true
+request-handlers.workspace = true
+query-core.workspace = true
+dmmf.workspace = true
+dml.workspace = true
+psl.workspace = true

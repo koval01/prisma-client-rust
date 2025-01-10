@@ -1,0 +1,25 @@
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider = "cargo prisma"
+    output   = "../tests/db.rs"
+
+    module_path = "db"
+}
+
+model SomeModel {
+    id                 String     @id
+    some_column        Json?
+    some_enum          SomeEnum
+    some_enum_optional SomeEnum?
+    // https://github.com/Brendonovich/prisma-client-rust/issues/303
+    enum_list          SomeEnum[]
+}
+
+enum SomeEnum {
+    A
+    B
+}
